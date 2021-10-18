@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@use '~@angular/material' as mat;
+
+@import "~bootstrap/scss/bootstrap-utilities";
+@import "~bootstrap/scss/bootstrap-grid";
+
+@import "./scss";
+
+@include mat.core();
+
+$foxbel-primary: mat.define-palette(mat.$indigo-palette);
+$foxbel-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$foxbel-warn: mat.define-palette(mat.$red-palette);
+
+$foxbel-theme: mat.define-light-theme((
+  color: (
+    primary: $foxbel-primary,
+    accent: $foxbel-accent,
+    warn: $foxbel-warn,
+  )
+));
+
+@include mat.all-component-themes($foxbel-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-drawer-container{
+  height: 100%;
+}
+
+.main {
+
+  padding-left: 1em;
+  padding-right: 1em;
+
+  @include rwd(large){
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}
